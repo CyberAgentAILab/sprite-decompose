@@ -1,0 +1,10 @@
+defaults:
+  - _self_
+  - model: default
+  - metric_func: default
+  - engine: default
+  - data: crello
+command: optimization
+seed: 1101
+out_dir: ???
+device: cpu

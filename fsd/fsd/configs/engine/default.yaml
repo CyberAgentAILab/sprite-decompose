@@ -1,0 +1,7 @@
+n_iters: 30000
+eval_interval: 1000
+save_interval: 1000
+resume: false
+save_output: false
+verbose: false
+timelimit_minute: null

@@ -1,0 +1,23 @@
+optimizer:
+  name: Adam
+  params:
+    lr: 0.001
+scheduler:
+  name: "off"
+  params: {}
+texture_net:
+  n_channels: 4
+loss_fn:
+  frames:
+    AlphaL2Loss:
+      use_target: true
+      label: main
+      weight: 1.0
+      params:
+        weight_alpha: 0.1
+n_iters_layer_order_optimize: 100
+layer_order_optimize_interval: 1000
+use_texture_model: true
+texture_size: [100, 100]
+init_textures: true
+init_matrices: true

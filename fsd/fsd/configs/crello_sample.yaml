@@ -1,0 +1,10 @@
+defaults:
+  - _self_
+  - model: default
+  - metric_func: default
+  - engine: default
+command: optimization_sample
+seed: 1101
+in_dir: ???
+out_dir: ???
+device: cpu

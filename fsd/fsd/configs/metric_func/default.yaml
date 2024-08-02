@@ -1,0 +1,33 @@
+frames:
+  RGBL1AlphaWeight:
+    activate: true
+    goal: min
+    params:
+      optimize_order: false
+      average_type: point
+  LPIPSAlphaWeight:
+    activate: true
+    goal: min
+    params:
+      net: alex
+      optimize_order: false
+      average_type: point
+layers:
+  AlphaL1:
+    activate: true
+    goal: min
+    params:
+      optimize_order: true
+  RGBL1AlphaWeight:
+    activate: true
+    goal: min
+    params:
+      optimize_order: true
+      average_type: batch
+  LPIPSAlphaWeight:
+    activate: true
+    goal: min
+    params:
+      net: alex
+      optimize_order: true
+      average_type: batch
