@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Fast Sprite Decomposition from Animated Graphics">
+  <meta name="keywords" content="Sprites">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fast Sprite Decomposition from Animated Graphics</title>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3QRQFHFW96"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-3QRQFHFW96');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-2 publication-title">Fast Sprite Decomposition from Animated Graphics</h1>
+          <h1 class="title is-3 publication-conference">ECCV 2024</h1>
+          <div class="is-size-4 publication-authors">
+            <span class="author-block">
+              <a href="https://tomoyukun.github.io/biography/">Tomoyuki Suzuki</a>,
+            </span>
+            <span class="author-block">
+              <a href="https://ktrk115.github.io/">Kotaro Kikuchi</a>,
+            </span>
+            <span class="author-block">
+              <a href="https://sites.google.com/view/kyamagu">Kota Yamaguchi</a>
+            </span>
+          </div>
+
+          <div class="is-size-4 publication-authors">
+            <span class="author-block"><a href="https://www.cyberagent.co.jp/en/">CyberAgent</a></span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <!-- <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span> -->
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/CyberAgentAILab/sprite-decompose"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <span class="link-block">
+                <a href="https://huggingface.co/datasets/cyberagent/crello-animation"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img src="./static/images/teaser.png" height="100%">
+    </div>
+    <h2 class="subtitle has-text-justified">
+      Given a raster video and auxiliary bounding box annotations, our method decomposes sprites that consist of static textures and animation parameters. 
+      The decomposed parameters are easily applicable to various video-editing applications.
+    </h2>
+  </div>
+</section>
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            We present an approach to decomposing animated graphics into sprites, a set of basic elements or layers.
+            Our approach builds on the optimization of sprite parameters to fit the raster video.
+            For efficiency, we assume static textures for sprites to reduce the search space while preventing artifacts using a texture prior model.
+            To further speed up the optimization, we introduce the initialization of the sprite parameters utilizing a pre-trained video object segmentation model and user input of single frame annotations.
+            For our study, we construct the <a href="https://huggingface.co/datasets/cyberagent/crello-animation">Crello Animation</a> dataset from an online design service and define quantitative metrics to measure the quality of the extracted sprites.
+            Experiments show that our method significantly outperforms baselines for similar decomposition tasks in terms of the quality/efficiency tradeoff.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Decomposition Results</h2>
+      <p>
+        We applied our method to <a href="https://huggingface.co/datasets/cyberagent/crello-animation">Crello Animation</a>.
+        The leftmost is the input, the next is the decomposed background, and the rest are the decomposed sprites for each sample.
+      </p>
+    <div class="column">
+      <img src="./static/outputs/6462144da2e859a5ba334c50.png" height="100%">  
+      <img src="./static/outputs/6344b5a6c606e149ac46ad8d.png" height="100%">
+      <img src="./static/outputs/62a87468079dcd93634632e7.png" height="100%">
+      <img src="./static/outputs/643fe0b1c5be994bb1102445.png" height="100%">
+      <img src="./static/outputs/64f0bd7a0bdd8185e8f5b551.png" height="100%">
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Speed vs. Quality trade-off</h2>
+      <p>
+        Our method can decompose sprites fast with high quality.
+        The figure shows the trade-off between the optimization time and the decomposition errors.
+        The right two errors are more important as quality metrics (see <a href="https://ktrk115.github.io/">paper</a>, for details).
+        LNA and DS are Layered Neural Atlases [Kasten 2021] and Deformable Sprites [Ye 2022], respectively.
+      </p>
+    <div class="column">
+      <img src="./static/images/trade-off.png" height="100%">
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@inproceedings{suzuki2024fast,
+  author={Suzuki, Tomoyuki and Kikuchi, Kotaro and Yamaguchi, Kota},
+  title={Fast Sprite Decomposition from Animated Graphics},
+  booktitle={ECCV},
+  year={2024}
+}</code></pre>
+  </div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">Reference</h2>
+    <p>
+      [Kasten 2021] Kasten, Y., Ofri, D., Wang, O., Dekel, "Layered Neural Atlases." TOG 2021.
+      <br>
+      [Ye 2022] Ye, V., Li, Z., Tucker, R., Kanazawa, A., Snavely, N., "Deformable Sprites." CVPR 2022.
+    </p>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="columns is-centered">
+          <div class="content">
+              The website is based on the template from <a href="https://nerfies.github.io/">Nerfies</a>.
+              Thanks to the authors.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
