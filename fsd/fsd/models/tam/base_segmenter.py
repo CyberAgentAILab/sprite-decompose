@@ -1,6 +1,5 @@
 # Original source: https://github.com/gaomingqi/Track-Anything/blob/master/tools/base_segmenter.py
 
-import cv2
 import numpy as np
 import torch
 from segment_anything import SamPredictor, sam_model_registry
@@ -60,9 +59,7 @@ class BaseSegmenter:
                 point_coords=prompts["point_coords"], point_labels=prompts["point_labels"], multimask_output=multimask
             )
         elif mode == "mask":
-            masks, scores, logits = self.predictor.predict(
-                mask_input=prompts["mask_input"], multimask_output=multimask
-            )
+            masks, scores, logits = self.predictor.predict(mask_input=prompts["mask_input"], multimask_output=multimask)
         elif mode == "both":  # both
             masks, scores, logits = self.predictor.predict(
                 point_coords=prompts["point_coords"],

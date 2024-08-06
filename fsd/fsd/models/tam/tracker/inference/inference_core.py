@@ -72,12 +72,12 @@ class InferenceCore:
             pred_prob_no_bg = pred_prob_with_bg[1:]
 
             pred_logits_with_bg = pred_logits_with_bg[0]
-            pred_logits_no_bg = pred_logits_with_bg[1:]
+            pred_logits_no_bg = pred_logits_with_bg[1:]  # noqa: F841
 
             if is_normal_update:
                 self.memory.set_hidden(hidden)
         else:
-            pred_prob_no_bg = pred_prob_with_bg = pred_logits_with_bg = pred_logits_no_bg = None
+            pred_prob_no_bg = pred_prob_with_bg = pred_logits_with_bg = pred_logits_no_bg = None  # noqa: F841
 
         # use the input mask if any
         if mask is not None:
@@ -91,9 +91,7 @@ class InferenceCore:
                 # shift by 1 because mask/pred_prob_no_bg do not contain background
                 mask = mask.type_as(pred_prob_no_bg)
                 if valid_labels is not None:
-                    shift_by_one_non_labels = [
-                        i for i in range(pred_prob_no_bg.shape[0]) if (i + 1) not in valid_labels
-                    ]
+                    shift_by_one_non_labels = [i for i in range(pred_prob_no_bg.shape[0]) if (i + 1) not in valid_labels]
                     # non-labelled objects are copied from the predicted mask
                     mask[shift_by_one_non_labels] = pred_prob_no_bg[shift_by_one_non_labels]
             pred_prob_with_bg = aggregate(mask, dim=0)
@@ -106,9 +104,7 @@ class InferenceCore:
             value, hidden = self.network.encode_value(
                 image, f16, self.memory.get_hidden(), pred_prob_with_bg[1:].unsqueeze(0), is_deep_update=is_deep_update
             )
-            self.memory.add_memory(
-                key, shrinkage, value, self.all_labels, selection=selection if self.enable_long_term else None
-            )
+            self.memory.add_memory(key, shrinkage, value, self.all_labels, selection=selection if self.enable_long_term else None)
             self.last_mem_ti = self.curr_ti
 
             if is_deep_update:

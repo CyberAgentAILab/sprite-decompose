@@ -2,7 +2,7 @@ import warnings
 
 import torch
 
-from ..model.memory_util import *
+from ..model.memory_util import do_softmax, get_similarity
 from .kv_memory_store import KeyValueMemoryStore
 
 
@@ -137,9 +137,7 @@ class MemoryManager:
             similarity = get_similarity(self.work_mem.key, self.work_mem.shrinkage, query_key, selection)
 
             if self.enable_long_term:
-                affinity, usage = do_softmax(
-                    similarity, inplace=(num_groups == 1), top_k=self.top_k, return_usage=True
-                )
+                affinity, usage = do_softmax(similarity, inplace=(num_groups == 1), top_k=self.top_k, return_usage=True)
 
                 # Record memory usage for working memory
                 self.work_mem.update_usage(usage.flatten())
@@ -291,13 +289,10 @@ class MemoryManager:
 
         # readout the values
         prototype_value = [
-            self._readout(affinity[gi], gv) if affinity[gi] is not None else None
-            for gi, gv in enumerate(candidate_value)
+            self._readout(affinity[gi], gv) if affinity[gi] is not None else None for gi, gv in enumerate(candidate_value)
         ]
 
         # readout the shrinkage term
-        prototype_shrinkage = (
-            self._readout(affinity[0], candidate_shrinkage) if candidate_shrinkage is not None else None
-        )
+        prototype_shrinkage = self._readout(affinity[0], candidate_shrinkage) if candidate_shrinkage is not None else None
 
         return prototype_key, prototype_value, prototype_shrinkage

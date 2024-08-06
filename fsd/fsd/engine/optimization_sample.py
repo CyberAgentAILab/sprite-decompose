@@ -1,5 +1,5 @@
 import os.path as osp
-from typing import Any
+
 
 import numpy as np
 import torch as tr

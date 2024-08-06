@@ -1,11 +1,7 @@
 # Original source: https://github.com/gaomingqi/Track-Anything/blob/master/tools/mask_painter.py
-import copy
-import time
 
 import cv2
 import numpy as np
-import torch
-from PIL import Image
 
 
 def colormap(rgb=True):
@@ -266,9 +262,7 @@ color_list = colormap()
 color_list = color_list.astype("uint8").tolist()
 
 
-def vis_add_mask(
-    image, background_mask, contour_mask, background_color, contour_color, background_alpha, contour_alpha
-):
+def vis_add_mask(image, background_mask, contour_mask, background_color, contour_color, background_alpha, contour_alpha):
     background_color = np.array(background_color)
     contour_color = np.array(contour_color)
 
@@ -276,9 +270,9 @@ def vis_add_mask(
     # contour_mask = 1 - contour_mask
 
     for i in range(3):
-        image[:, :, i] = image[:, :, i] * (
-            1 - background_alpha + background_mask * background_alpha
-        ) + background_color[i] * (background_alpha - background_mask * background_alpha)
+        image[:, :, i] = image[:, :, i] * (1 - background_alpha + background_mask * background_alpha) + background_color[i] * (
+            background_alpha - background_mask * background_alpha
+        )
 
         image[:, :, i] = image[:, :, i] * (1 - contour_alpha + contour_mask * contour_alpha) + contour_color[i] * (
             contour_alpha - contour_mask * contour_alpha

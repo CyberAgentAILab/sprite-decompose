@@ -2,7 +2,6 @@
 import os
 import os.path as osp
 
-import cv2
 import fsd
 import numpy as np
 import requests
@@ -114,7 +113,7 @@ def segmentation_tam_key_box_prompt(
         box=np.array([box]),
     )
     if key_mask.mean() == 0:
-        logger.warning(f"key_mask is empty")
+        logger.warning("key_mask is empty")
         return np.zeros((t, h, w))
 
     key_index = key_index if key_index != -1 else len(frames) - 1
