@@ -32,13 +32,14 @@ You can decompose a video by running the following command:
     device=cuda
 ```
 
-We provide some examples of inputs (video and foreground box) from [Crello Animation](https://huggingface.co/datasets/cyberagent/crello-animation) in `./inputs`.
+We provide some examples of inputs (video and foreground box) from [Crello Animation](https://huggingface.co/datasets/cyberagent/crello-animation) in [`./inputs`](./inputs/) and corresponding outputs (sprites) in [`./outputs`](./outputs/).
 You can specify the input data by changing the `in_dir` argument.
 
 We manage configurations using [hydra](https://github.com/facebookresearch/hydra) and you can override the [default configuration](https://github.com/CyberAgentAILab/video-layer-decomposition/blob/publication/fsd/fsd/configs/crello_sample.yaml) (our best) by specifying the arguments. We illustrate some useful arguments to adjust your optimization as follows:
 
 - `engine.n_iters`: number of iterations for optimization.
-- `engine.save_interval`: interval for saving the optimization progress.
+- `engine.save_interval`: iteration interval for saving the optimization progress.
+- `engine.eval_interval`: iteration interval for evaluating the decomposition quality, which is logged in `progress.json`.
 - `engine.timelimit_minute`: time limit for each optimization in minutes. If the optimization exceeds this limit, it will be terminated even if the number of iterations is not reached.
 - `engine.resume`: if `True`, resume the optimization from the last checkpoint in `out_dir`.
 - `device`: device to run the optimization. You can specify `cuda` or `cpu`.

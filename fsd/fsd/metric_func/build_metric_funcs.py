@@ -1,11 +1,11 @@
 from typing import Any, Callable, Dict
 
-from fsd.metric_func import metric_funcs
+from fsd.metric_func.metric_funcs import metric_registry
 
 
 def build_metric_fn(name: str, params: Dict[str, Any]) -> Callable:
-    if hasattr(metric_funcs, name):
-        return getattr(metric_funcs, name)(**params)
+    if name in metric_registry:
+        return metric_registry[name](**params)
     else:
         raise ValueError(f"{name} is not defined as a metric function.")
 

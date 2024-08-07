@@ -1,12 +1,12 @@
 from typing import Any, Callable, Dict, Optional, Union
 
 import torch.nn
-from fsd.loss_func import loss_funcs
+from fsd.loss_func.loss_funcs import loss_registory
 
 
 def build_loss_fn(name: str, params: Dict[str, Any]) -> Callable:
-    if hasattr(loss_funcs, name):
-        return getattr(loss_funcs, name)(**params)
+    if name in loss_registory:
+        return loss_registory[name](**params)
     elif hasattr(torch.nn, name):
         return getattr(torch.nn, name)(**params)
     else:

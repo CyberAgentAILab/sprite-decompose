@@ -1,6 +1,7 @@
 # Original source: https://github.com/vye16/deformable-sprites/blob/main/models/tex_gen.py
 import torch
 import torch.nn as nn
+import torch.nn.functional as F
 
 from .unet import UNet
 

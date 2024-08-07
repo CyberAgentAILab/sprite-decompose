@@ -69,7 +69,7 @@ def render_layers_torch_core(textures: Tensor, matrices: Tensor, opacity: Tensor
     """
     assert (textures.max() <= 1.0) and (textures.min() >= 0), "Textures should be normalized to [0, 1]."
     assert (opacity.max() <= 1.0) and (opacity.min() >= 0), "opacity should be normalized to [0, 1]."
-    l, t, _ = matrices.shape
+    l, t, _ = matrices.shape  # noqa: E741
     tex_repeat = repeat(textures, "l h w c -> (l t) c h w", t=t)  # (n_layers * t, c, h, w)
     tex_warped = warp_affine_torch(tex_repeat, matrices.reshape(-1, 3, 3), height=height, width=width)
     tex_warped = rearrange(tex_warped, "(l t) c h w -> l t h w c", l=l)

@@ -10,8 +10,8 @@ import torch
 import torch.nn as nn
 
 from .aggregate import aggregate
-from .memory_util import *
-from .modules import *
+from .memory_util import get_affinity, readout
+from .modules import Decoder, KeyEncoder, KeyProjection, ValueEncoder
 
 
 class XMem(nn.Module):
@@ -72,10 +72,7 @@ class XMem(nn.Module):
         num_objects = masks.shape[1]
         if num_objects != 1:
             others = torch.cat(
-                [
-                    torch.sum(masks[:, [j for j in range(num_objects) if i != j]], dim=1, keepdim=True)
-                    for i in range(num_objects)
-                ],
+                [torch.sum(masks[:, [j for j in range(num_objects) if i != j]], dim=1, keepdim=True) for i in range(num_objects)],
                 1,
             )
         else:

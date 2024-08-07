@@ -1,6 +1,4 @@
 # import for debugging
-import glob
-import os
 
 import numpy as np
 

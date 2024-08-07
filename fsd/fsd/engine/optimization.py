@@ -81,7 +81,7 @@ def optimization(cfg: Any, timelimit_minute: int = None) -> None:
     for i, example in enumerate(dataset):
         target, prompt = make_target_and_prompt(example)
         template_id = example["id"]
-        l, t, h, w, c = target["layers"].shape
+        l, t, h, w, c = target["layers"].shape  # noqa: E741
         logger.info(f"{i + 1} / {len(dataset)}: {template_id}")
         logger.info(f"Video size: {t} frames, {h}x{w} pixels, {l} layers")
 

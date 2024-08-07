@@ -16,7 +16,7 @@ import torch.nn.functional as F
 
 from . import resnet
 from .cbam import CBAM
-from .group_modules import *
+from .group_modules import GConv2D, GroupResBlock, MainToGroupDistributor, downsample_groups, upsample_groups
 
 
 class FeatureFusionBlock(nn.Module):
