@@ -1,7 +1,7 @@
 # Fast Sprite Decomposition from Animated Graphics (ECCV2024)
 
 This repository is an official implementation of the paper "Fast Sprite Decomposition from Animated Graphics".
-Please also refer to the [project page](https://CyberAgentAILab.github.io/sprite-decompose), [paper](), and our [Crello Animation](https://huggingface.co/datasets/cyberagent/crello-animation) dataset.
+Please also refer to the [project page](https://CyberAgentAILab.github.io/sprite-decompose), [paper](https://arxiv.org/abs/2408.03923), and our [Crello Animation](https://huggingface.co/datasets/cyberagent/crello-animation) dataset.
 
 <img src="./assets/teaser.png">
 
