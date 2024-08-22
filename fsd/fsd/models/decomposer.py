@@ -116,7 +116,7 @@ class SpritesDecomposer(Sprites):
             fg_matrices = mat_shift_tr(shift) @ mat_scale_tr(scale)
             bg_matrix = tr.eye(3).unsqueeze(0).unsqueeze(0).repeat(1, self.num_frames, 1, 1)
             matrices = rearrange(tr.cat([bg_matrix, fg_matrices], dim=0), "f t i j -> f t (i j)")
-            self.matrices = nn.Parameter(matrices.to(self.device))
+            self.matrices.data = matrices.to(self.device)
         if init_textures:
             # Generate rough bg texture: inpaint unvisible area with the mean value
             fg_mask = masks.any(0)
