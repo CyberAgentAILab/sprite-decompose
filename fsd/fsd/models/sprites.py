@@ -190,7 +190,7 @@ class Sprites(nn.Module):
 
         state = {
             "matrices": self.matrices,
-            "opacity": self.opacity,
+            "opacity": self.opacity if not self.opacity_sigmoid else tr.sigmoid(self.opacity),
             "height": self.height,
             "width": self.width,
             "layer_order": self.layer_order,
@@ -198,7 +198,8 @@ class Sprites(nn.Module):
         }
         save_json(state, osp.join(path, "params.json"))
         for i in range(self.num_layers):
-            texture_np = self.textures[i].detach().cpu().numpy()
+            texture = self.textures[i] if not self.texture_sigmoid else tr.sigmoid(self.textures[i])
+            texture_np = texture.detach().cpu().numpy()
             if i == self.layer_order[0] and not self.bg_transparent:
                 texture_np[..., -1] = 1
             save_image_pil(Image.fromarray((texture_np * 255).astype(np.uint8)), osp.join(path, texture_paths[i]))
