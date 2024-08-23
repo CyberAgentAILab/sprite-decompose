@@ -143,7 +143,6 @@ class Sprites(nn.Module):
         tensor: (n_layers, T, H, W, C)
         """
         if self.static_bg:
-            print(tr.eye(3).flatten().repeat(1, self.num_frames, 1).shape, self.matrices[1:].shape)
             matrices = tr.cat(
                 [tr.eye(3).flatten().repeat(1, self.num_frames, 1).to(self.matrices.device), self.matrices[1:]], dim=0
             )
