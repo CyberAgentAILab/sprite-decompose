@@ -142,9 +142,16 @@ class Sprites(nn.Module):
         >>>
         tensor: (n_layers, T, H, W, C)
         """
+        if self.static_bg:
+            matrices = tr.cat(
+                [tr.eye(3).flatten().repeat(1, self.num_frames, 1).to(self.matrices.device), self.matrices[1:]], dim=0
+            )
+        else:
+            matrices = self.matrices
+
         layers = render_layers_torch_core(
             tr.sigmoid(self.textures) if self.texture_sigmoid else self.textures,
-            self.matrices,
+            matrices,
             tr.sigmoid(self.opacity) if self.opacity_sigmoid else self.opacity,
             height=self.height,
             width=self.width,
