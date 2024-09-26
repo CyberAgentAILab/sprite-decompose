@@ -45,6 +45,23 @@
     <script src="./static/js/bulma-carousel.min.js"></script>
     <script src="./static/js/bulma-slider.min.js"></script>
     <script src="./static/js/index.js"></script>
+    <style>
+      .image-container {
+        text-align: center;
+      }
+
+      .image-container img {
+        /* width: 100%; */
+        height: auto;
+      }
+
+      .caption {
+        margin-bottom: -5px;
+        font-size: 18px;
+        color: #333;
+        /* text-align: left; */
+      }
+    </style>
   </head>
   <body>
     <section class="hero">
@@ -258,32 +275,22 @@
           Once decomposed by our method, the sprites can be easily manipulated.
         </p>
       </div>
-      <div class="columns is-centered">
-        <div
-          class="column is-narrow"
-          style="
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 70%;
-          "
-        >
-          <img
-            src="./static/application/application-1.gif"
-            style="width: 100%; height: auto; margin-bottom: -0px"
-            alt="Application 1"
-          />
-          <img
-            src="./static/application/application-3.gif"
-            style="width: 100%; height: auto; margin-bottom: -0px"
-            alt="Application 2"
-          />
-          <img
-            src="./static/application/application-2.gif"
-            style="width: 100%; height: auto"
-            alt="Application 3"
-          />
-        </div>
+      <div class="image-container">
+        <img
+          src="./static/application/application-3.gif"
+          style="width: 100%; height: auto; margin-bottom: -30px"
+          alt="Application 3"
+        />
+        <img
+          src="./static/application/application-1.gif"
+          style="width: 100%; height: auto"
+          alt="Application 1"
+        />
+        <img
+          src="./static/application/application-2.gif"
+          style="width: 100%; height: auto"
+          alt="Application 2"
+        />
       </div>
     </section>
 
